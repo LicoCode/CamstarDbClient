@@ -1,5 +1,5 @@
 ﻿using CamstarHelper.Context;
-using CamstarHelper.Entity;
+using CamstarClient.Entity;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -16,11 +16,10 @@ namespace CamstarClient
             var mfgorders = dbContext.MfgOrders.Where(b => b.Name.Equals("20220919"));
             var mfgorder = mfgorders.First();
 
-            var products = dbContext.Products.Where(b => b.InstanceId.Equals("00062c8000000002"));
+            var products = dbContext.Products.Where(b => b.InstanceID.Equals("00062c8000000002"));
             var product = products.First();
 
-            var userOnlineQueryGroups = dbContext.UserOnlineQueryGroups.Where(b => b.Name.Equals("test"));
-            var userOnlineQueryGroup = userOnlineQueryGroups.First();
+            
 
             var lossReasonGroups = dbContext.LossReasonGroups.Where(b => b.Name.Equals("test"));
             var lossReasonGroup = lossReasonGroups.First();
@@ -28,8 +27,7 @@ namespace CamstarClient
             var resources = dbContext.Resources.Where(b => b.Name.Equals("test"));
             var resource = resources.First();
 
-            var feeders = dbContext.Feeders.Where(b => b.Name.Equals("test"));
-            var feeder = feeders.First();
+            
 
             Console.WriteLine(product);
         }

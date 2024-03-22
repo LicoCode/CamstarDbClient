@@ -1,4 +1,4 @@
-﻿using CamstarHelper.Entity;
+﻿using CamstarClient.Entity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
 using System.Diagnostics;
@@ -15,7 +15,8 @@ internal class CamstarDbContext : DbContext
     {
         optionsBuilder.LogTo(Console.WriteLine, LogLevel.Information)  //打印Info日志
             .UseLazyLoadingProxies()   //懒加载
-            .UseSqlServer(@"Data Source=localhost;Initial Catalog=OLTP;User ID=opcenter;Password=Cam1star;Encrypt=True;TrustServerCertificate=True;");
+            .UseOracle(@"DATA SOURCE=LOCALHOST:1521/orclpdb;USER ID=OPCENTERDBUSER;PASSWORD=Oracle.123;");
+            //.UseSqlServer(@"Data Source=localhost;Initial Catalog=insitedb;User ID=sa;Password=abcABC@123;Encrypt=True;TrustServerCertificate=True;");
     }
 
     public override int SaveChanges()
@@ -34,37 +35,55 @@ internal class CamstarDbContext : DbContext
     public DbSet<Product> Products { get; set; }
     public DbSet<ProductBase> ProductBases { get; set; }
     public DbSet<MfgOrder> MfgOrders { get; set; }
-    public DbSet<UserOnlineQueryGroup> UserOnlineQueryGroups { get; set; }
     public DbSet<LossReasonGroup> LossReasonGroups { get; set; }
     public DbSet<Resource> Resources { get; set; }
-    public DbSet<Feeder> Feeders { get; set; }
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
+        //Product
         modelBuilder.Entity<Product>()
-        .HasOne(e => e.ProductBase)
+        .HasOne(e => e.Base)
         .WithMany(e => e.Revisions)
-        .HasForeignKey("ProductBaseId")
+        .HasForeignKey("PRODUCTBASEID")
         .IsRequired(true);
+        modelBuilder.Entity<Product>()
+       .HasOne(e => e.Workflow)
+       .WithMany()
+       .HasForeignKey("WORKFLOWID")
+       .IsRequired(true);
+
 
         modelBuilder.Entity<ProductBase>()
         .HasOne(e => e.RevOfRcd)
         .WithOne()
-        .HasForeignKey<ProductBase>("RevOfRcdId")
+        .HasForeignKey<ProductBase>("REVOFRCDID")
+        .IsRequired(true);
+
+        //Workflow
+        modelBuilder.Entity<Workflow>()
+        .HasOne(e => e.Base)
+        .WithMany()
+        .HasForeignKey("WORKFLOWID")
+        .IsRequired(true);
+
+        modelBuilder.Entity<WorkflowBase>()
+        .HasOne(e => e.RevOfRcd)
+        .WithOne()
+        .HasForeignKey<WorkflowBase>("RevOfRcdId")
         .IsRequired(true);
 
         modelBuilder.Entity<MfgOrder>()
         .HasOne(e => e.Product)
         .WithMany()
-        .HasForeignKey("ProductId")
+        .HasForeignKey("PRODUCTID")
         .IsRequired(false);
         modelBuilder.Entity<MfgOrder>()
         .HasOne(e => e.ProductBase)
         .WithMany()
-        .HasForeignKey("ProductBaseId")
+        .HasForeignKey("PRODUCTBASEID")
         .IsRequired(false);
 
-        modelBuilder.Entity<UserOnlineQueryGroup>()
+        /*modelBuilder.Entity<UserOnlineQueryGroup>()
         .HasMany(e => e.Entities) 
         .WithMany() 
         .UsingEntity<Dictionary<string, object>>(
@@ -76,9 +95,9 @@ internal class CamstarDbContext : DbContext
                 j.HasKey("NamedObjectGroupId", "EntriesId");
                     
             }
-        );
+        );*/
 
-        modelBuilder.Entity<UserOnlineQueryGroup>()
+        /*modelBuilder.Entity<UserOnlineQueryGroup>()
         .HasMany(e => e.Groups)
         .WithMany()
         .UsingEntity<Dictionary<string, object>>(
@@ -90,39 +109,39 @@ internal class CamstarDbContext : DbContext
                 j.HasKey("NamedObjectGroupId", "GroupsId");
 
             }
-        );
+        );*/
 
         modelBuilder.Entity<LossReasonGroup>()
         .HasMany(e => e.Groups)
         .WithMany()
         .UsingEntity<Dictionary<string, object>>(
-            "NamedObjectGroupGroups",
-            l => l.HasOne<LossReasonGroup>().WithMany().HasForeignKey("GroupsId"),
-            r => r.HasOne<LossReasonGroup>().WithMany().HasForeignKey("NamedObjectGroupId"),
+            "NAMEDOBJECTGROUPGROUPS",
+            l => l.HasOne<LossReasonGroup>().WithMany().HasForeignKey("GROUPSID"),
+            r => r.HasOne<LossReasonGroup>().WithMany().HasForeignKey("NAMEDOBJECTGROUPID"),
             j =>
             {
-                j.HasKey("NamedObjectGroupId", "GroupsId");
+                j.HasKey("NAMEDOBJECTGROUPID", "GROUPSID");
 
             }
         );
 
         modelBuilder.Entity<LossReasonGroup>()
-        .HasMany(e => e.Entities)
+        .HasMany(e => e.Entries)
         .WithMany()
         .UsingEntity<Dictionary<string, object>>(
-            "NamedObjectGroupEntries",
-            l => l.HasOne<LossReason>().WithMany().HasForeignKey("EntriesId"),
-            r => r.HasOne<LossReasonGroup>().WithMany().HasForeignKey("NamedObjectGroupId"),
+            "NAMEDOBJECTGROUPENTRIES",
+            l => l.HasOne<LossReason>().WithMany().HasForeignKey("ENTRIESID"),
+            r => r.HasOne<LossReasonGroup>().WithMany().HasForeignKey("NAMEDOBJECTGROUPID"),
             j =>
             {
-                j.HasKey("NamedObjectGroupId", "EntriesId");
+                j.HasKey("NAMEDOBJECTGROUPID", "ENTRIESID");
 
             }
         );
 
         modelBuilder.Entity<Resource>()
-        .HasDiscriminator(e => e.CDOTypeId)
-        .HasValue<Feeder>(4792322)
-        .HasValue<Resource>(1490);
+        .HasDiscriminator(e => e.CDOTypeId);
+        /*.HasValue<Feeder>(4792322)
+        .HasValue<Resource>(1490);*/
     }
 }
