@@ -9,7 +9,7 @@
 
 // 
 //    @author lichong
-//    @date 2024/3/22
+//    @date 2024/3/23
 //
 namespace CamstarClient.Entity {
     using System.ComponentModel.DataAnnotations;
@@ -22,12 +22,32 @@ namespace CamstarClient.Entity {
             get; set;
         }
         [Column("OUTPUTTOFILE")]
-        public bool OutputToFile {
+        public System.Nullable<bool> OutputToFile {
+            get; set;
+        }
+        [Column("CDOTYPEID")]
+        public new System.Nullable<int> CDOTypeId {
             get; set;
         }
         [Column("PRINTQUEUEID")]
         [Key()]
         public new string InstanceID {
+            get; set;
+        }
+        [Column("CHANGECOUNT")]
+        public new System.Nullable<int> ChangeCount {
+            get; set;
+        }
+        [Column("NOTES")]
+        public new string Notes {
+            get; set;
+        }
+        [Column("DESCRIPTION")]
+        public new string Description {
+            get; set;
+        }
+        [Column("PRINTQUEUENAME")]
+        public new string Name {
             get; set;
         }
     }

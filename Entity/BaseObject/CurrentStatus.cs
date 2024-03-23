@@ -9,17 +9,17 @@
 
 // 
 //    @author lichong
-//    @date 2024/3/22
+//    @date 2024/3/23
 //
 namespace CamstarClient.Entity {
     using System.ComponentModel.DataAnnotations;
     using System.ComponentModel.DataAnnotations.Schema;
     
     [Table("CURRENTSTATUS")]
-    public class CurrentStatus : BaseObject{
+    public class CurrentStatus : BaseObject {
         [Column("CURRENTSTATUSID")]
         [Key()]
-        public string InstanceID {
+        public new string InstanceID {
             get; set;
         }
         public virtual Factory Factory {
@@ -32,30 +32,30 @@ namespace CamstarClient.Entity {
             get; set;
         }
         [Column("LASTMOVEDATE")]
-        public System.DateTime LastMoveDate {
+        public System.Nullable<System.DateTime> LastMoveDate {
             get; set;
         }
         [Column("INPROCESS")]
-        public bool InProcess {
+        public System.Nullable<bool> InProcess {
             get; set;
         }
         [Column("CHANGECOUNT")]
-        public int ChangeCount {
+        public new System.Nullable<int> ChangeCount {
             get; set;
         }
         public virtual Spec Spec {
             get; set;
         }
         [Column("INREWORK")]
-        public bool InRework {
+        public System.Nullable<bool> InRework {
             get; set;
         }
         [Column("CDOTYPEID")]
-        public int CDOTypeId {
+        public new System.Nullable<int> CDOTypeId {
             get; set;
         }
         [Column("INQUEUETIME")]
-        public double InQueueTime {
+        public System.Nullable<double> InQueueTime {
             get; set;
         }
         [Column("ISRESOURCENAME")]
@@ -79,7 +79,7 @@ namespace CamstarClient.Entity {
             get; set;
         }
         [Column("ISWORKFLOWSTEPSEQUENCE")]
-        public int isWorkflowStepSequence {
+        public System.Nullable<int> isWorkflowStepSequence {
             get; set;
         }
         [Column("ISSPECNAME")]
@@ -95,15 +95,15 @@ namespace CamstarClient.Entity {
             get; set;
         }
         [Column("ISOPSTARTQTY")]
-        public double isOpStartQty {
+        public System.Nullable<double> isOpStartQty {
             get; set;
         }
         [Column("LASTMOVEOUTDATE")]
-        public System.DateTime LastMoveOutDate {
+        public System.Nullable<System.DateTime> LastMoveOutDate {
             get; set;
         }
         [Column("MOVEINDATE")]
-        public System.DateTime MoveInDate {
+        public System.Nullable<System.DateTime> MoveInDate {
             get; set;
         }
     }

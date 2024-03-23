@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("CamstarClient")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+5bb36ea689a812488c5001c48a306861d0a4060d")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+0b059bb973977a26c0000ea74792e909f11ffd2b")]
 [assembly: System.Reflection.AssemblyProductAttribute("CamstarClient")]
 [assembly: System.Reflection.AssemblyTitleAttribute("CamstarClient")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

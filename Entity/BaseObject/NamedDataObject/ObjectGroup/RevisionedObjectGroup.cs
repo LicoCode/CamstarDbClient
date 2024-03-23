@@ -9,22 +9,45 @@
 
 // 
 //    @author lichong
-//    @date 2024/3/22
+//    @date 2024/3/23
 //
 namespace CamstarClient.Entity {
     using System.ComponentModel.DataAnnotations;
     using System.ComponentModel.DataAnnotations.Schema;
     
+    [NotMapped()]
     public abstract class RevisionedObjectGroup : ObjectGroup {
+        public new string EntryType {
+            get; set;
+        }
+        public new string Name {
+            get; set;
+        }
+        public new System.Nullable<int> CDOTypeId {
+            get; set;
+        }
+        public new string Notes {
+            get; set;
+        }
         public new virtual ICollection<RevisionedObject> Entries {
             get; set;
         }
-        [Column("REVISIONEDOBJECTGROUPID")]
-        [Key()]
         public new string InstanceID {
             get; set;
         }
+        public new System.Nullable<int> ChangeCount {
+            get; set;
+        }
+        public new string Description {
+            get; set;
+        }
+        public new System.Nullable<int> IconId {
+            get; set;
+        }
         public new virtual ICollection<RevisionedObjectGroup> Groups {
+            get; set;
+        }
+        public new System.Nullable<bool> IsFrozen {
             get; set;
         }
     }

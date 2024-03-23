@@ -9,14 +9,60 @@
 
 // 
 //    @author lichong
-//    @date 2024/3/22
+//    @date 2024/3/23
 //
 namespace CamstarClient.Entity {
     using System.ComponentModel.DataAnnotations;
     using System.ComponentModel.DataAnnotations.Schema;
     
+    [NotMapped()]
     public abstract class MaterialListItem : NamedSubentity {
+        public System.Nullable<System.DateTime> EffectiveFromDate {
+            get; set;
+        }
+        public System.Nullable<System.DateTime> EffectiveThruDate {
+            get; set;
+        }
+        public IssueControlEnum IssueControl {
+            get; set;
+        }
+        public string ReferenceDesignator {
+            get; set;
+        }
+        public System.Nullable<double> QtyRequired {
+            get; set;
+        }
+        public System.Nullable<double> ScrapPercent {
+            get; set;
+        }
+        public virtual UOM UOM {
+            get; set;
+        }
+        public virtual Product Product {
+            get; set;
+        }
+        public System.Nullable<bool> AllowSubstitution {
+            get; set;
+        }
+        public System.Nullable<bool> AllowOverConsumption {
+            get; set;
+        }
+        public System.Nullable<bool> AllowUnderConsumption {
+            get; set;
+        }
+        public new System.Nullable<int> CDOTypeId {
+            get; set;
+        }
+        public new System.Nullable<int> ChangeCount {
+            get; set;
+        }
         public new string InstanceID {
+            get; set;
+        }
+        public new virtual BaseObject Parent {
+            get; set;
+        }
+        public new string Name {
             get; set;
         }
     }

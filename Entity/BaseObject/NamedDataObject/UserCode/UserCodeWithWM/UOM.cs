@@ -9,38 +9,37 @@
 
 // 
 //    @author lichong
-//    @date 2024/3/22
+//    @date 2024/3/23
 //
 namespace CamstarClient.Entity {
     using System.ComponentModel.DataAnnotations;
     using System.ComponentModel.DataAnnotations.Schema;
     
     [Table("UOM")]
-    public class UOM : UserCodeWithWM
-    {
+    public class UOM : UserCodeWithWM {
         [Column("UOMNAME")]
-        public string Name {
+        public new string Name {
             get; set;
         }
         [Column("DESCRIPTION")]
-        public string Description {
+        public new string Description {
             get; set;
         }
         [Column("CHANGECOUNT")]
-        public int ChangeCount {
+        public new System.Nullable<int> ChangeCount {
             get; set;
         }
         [Column("UOMID")]
         [Key()]
-        public string InstanceID {
+        public new string InstanceID {
             get; set;
         }
         [Column("CDOTYPEID")]
-        public int CDOTypeId {
+        public new System.Nullable<int> CDOTypeId {
             get; set;
         }
         [Column("NOTES")]
-        public string Notes {
+        public new string Notes {
             get; set;
         }
     }

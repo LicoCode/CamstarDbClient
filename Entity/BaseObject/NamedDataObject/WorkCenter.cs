@@ -9,7 +9,7 @@
 
 // 
 //    @author lichong
-//    @date 2024/3/22
+//    @date 2024/3/23
 //
 namespace CamstarClient.Entity {
     using System.ComponentModel.DataAnnotations;
@@ -18,19 +18,39 @@ namespace CamstarClient.Entity {
     [Table("WORKCENTER")]
     public class WorkCenter : NamedDataObject {
         [Column("NORMALQUEUETIME")]
-        public double NormalQueueTime {
+        public System.Nullable<double> NormalQueueTime {
             get; set;
         }
         [Column("FASTQUEUETIME")]
-        public double FastQueueTime {
+        public System.Nullable<double> FastQueueTime {
+            get; set;
+        }
+        [Column("WORKCENTERNAME")]
+        public new string Name {
+            get; set;
+        }
+        [Column("DESCRIPTION")]
+        public new string Description {
             get; set;
         }
         public virtual ResourceGroup ResourceGroup {
             get; set;
         }
+        [Column("CHANGECOUNT")]
+        public new System.Nullable<int> ChangeCount {
+            get; set;
+        }
         [Column("WORKCENTERID")]
         [Key()]
         public new string InstanceID {
+            get; set;
+        }
+        [Column("CDOTYPEID")]
+        public new System.Nullable<int> CDOTypeId {
+            get; set;
+        }
+        [Column("NOTES")]
+        public new string Notes {
             get; set;
         }
     }

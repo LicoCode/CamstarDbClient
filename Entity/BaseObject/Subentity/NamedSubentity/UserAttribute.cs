@@ -9,7 +9,7 @@
 
 // 
 //    @author lichong
-//    @date 2024/3/22
+//    @date 2024/3/23
 //
 namespace CamstarClient.Entity {
     using System.ComponentModel.DataAnnotations;
@@ -18,11 +18,15 @@ namespace CamstarClient.Entity {
     [Table("USERATTRIBUTE")]
     public class UserAttribute : NamedSubentity {
         [Column("ISEXPRESSION")]
-        public bool IsExpression {
+        public System.Nullable<bool> IsExpression {
             get; set;
         }
         [Column("ATTRIBUTEVALUE")]
         public string AttributeValue {
+            get; set;
+        }
+        [Column("CDOTYPEID")]
+        public new System.Nullable<int> CDOTypeId {
             get; set;
         }
         [Column("DATATYPE")]
@@ -34,7 +38,12 @@ namespace CamstarClient.Entity {
         public new string InstanceID {
             get; set;
         }
-        public new virtual BaseObject Parent {
+        [Column("CHANGECOUNT")]
+        public new System.Nullable<int> ChangeCount {
+            get; set;
+        }
+        [Column("USERATTRIBUTENAME")]
+        public new string Name {
             get; set;
         }
     }

@@ -9,23 +9,19 @@
 
 // 
 //    @author lichong
-//    @date 2024/3/22
+//    @date 2024/3/23
 //
 namespace CamstarClient.Entity {
     using System.ComponentModel.DataAnnotations;
     using System.ComponentModel.DataAnnotations.Schema;
     
     [Table("MFGORDER")]
-    public class MfgOrder :NamedDataObject {
+    public class MfgOrder : NamedDataObject {
         [Column("QTY")]
-        public double Qty {
+        public System.Nullable<double> Qty {
             get; set;
         }
         public virtual Product Product {
-            get; set;
-        }
-        public virtual ProductBase ProductBase
-        {
             get; set;
         }
         public virtual UOM UOM {
@@ -33,39 +29,39 @@ namespace CamstarClient.Entity {
         }
         [Column("MFGORDERID")]
         [Key()]
-        public string InstanceID {
+        public new string InstanceID {
             get; set;
         }
         [Column("MFGORDERNAME")]
-        public string Name {
+        public new string Name {
             get; set;
         }
         [Column("DESCRIPTION")]
-        public string Description {
+        public new string Description {
             get; set;
         }
         [Column("CHANGECOUNT")]
-        public int ChangeCount {
+        public new System.Nullable<int> ChangeCount {
             get; set;
         }
         [Column("CDOTYPEID")]
-        public int CDOTypeId {
+        public new System.Nullable<int> CDOTypeId {
             get; set;
         }
         [Column("NOTES")]
-        public string Notes {
+        public new string Notes {
             get; set;
         }
         [Column("PLANNEDSTARTDATE")]
-        public System.DateTime PlannedStartDate {
+        public System.Nullable<System.DateTime> PlannedStartDate {
             get; set;
         }
         [Column("PLANNEDCOMPLETIONDATE")]
-        public System.DateTime PlannedCompletionDate {
+        public System.Nullable<System.DateTime> PlannedCompletionDate {
             get; set;
         }
         [Column("RELEASEDATE")]
-        public System.DateTime ReleaseDate {
+        public System.Nullable<System.DateTime> ReleaseDate {
             get; set;
         }
         public virtual OrderType OrderType {
@@ -75,11 +71,11 @@ namespace CamstarClient.Entity {
             get; set;
         }
         [Column("QTYSTARTED")]
-        public double QtyStarted {
+        public System.Nullable<double> QtyStarted {
             get; set;
         }
         [Column("LASTCHANGEDATE")]
-        public System.DateTime LastChangeDate {
+        public System.Nullable<System.DateTime> LastChangeDate {
             get; set;
         }
         public virtual MfgLine MfgLine {

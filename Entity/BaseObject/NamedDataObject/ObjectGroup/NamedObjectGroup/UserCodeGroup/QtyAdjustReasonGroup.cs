@@ -9,48 +9,47 @@
 
 // 
 //    @author lichong
-//    @date 2024/3/22
+//    @date 2024/3/23
 //
 namespace CamstarClient.Entity {
     using System.ComponentModel.DataAnnotations;
     using System.ComponentModel.DataAnnotations.Schema;
     
     [Table("QTYADJUSTGROUP")]
-    public class QtyAdjustReasonGroup : UserCodeGroup
-    {
+    public class QtyAdjustReasonGroup : UserCodeGroup {
         [Column("QTYADJUSTGROUPID")]
         [Key()]
-        public string InstanceID {
+        public new string InstanceID {
             get; set;
         }
         [Column("CHANGECOUNT")]
-        public int ChangeCount {
+        public new System.Nullable<int> ChangeCount {
             get; set;
         }
         [Column("DESCRIPTION")]
-        public string Description {
+        public new string Description {
             get; set;
         }
         [Column("QTYADJUSTGROUPNAME")]
-        public string Name {
+        public new string Name {
             get; set;
         }
-        public virtual ICollection<QtyAdjustReason> Entries {
+        public new virtual ICollection<QtyAdjustReason> Entries {
             get; set;
         }
         [Column("ENTRYTYPE")]
-        public string EntryType {
+        public new string EntryType {
             get; set;
         }
-        public virtual ICollection<QtyAdjustReasonGroup> Groups {
+        public new virtual ICollection<QtyAdjustReasonGroup> Groups {
             get; set;
         }
         [Column("CDOTYPEID")]
-        public int CDOTypeId {
+        public new System.Nullable<int> CDOTypeId {
             get; set;
         }
         [Column("NOTES")]
-        public string Notes {
+        public new string Notes {
             get; set;
         }
     }

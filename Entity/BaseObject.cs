@@ -9,20 +9,21 @@
 
 // 
 //    @author lichong
-//    @date 2024/3/22
+//    @date 2024/3/23
 //
 namespace CamstarClient.Entity {
     using System.ComponentModel.DataAnnotations;
     using System.ComponentModel.DataAnnotations.Schema;
     
+    [NotMapped()]
     public abstract class BaseObject {
         public string InstanceID {
             get; set;
         }
-        public int ChangeCount {
+        public System.Nullable<int> ChangeCount {
             get; set;
         }
-        public int CDOTypeId {
+        public System.Nullable<int> CDOTypeId {
             get; set;
         }
     }

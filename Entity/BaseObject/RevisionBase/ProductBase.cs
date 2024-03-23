@@ -9,7 +9,7 @@
 
 // 
 //    @author lichong
-//    @date 2024/3/22
+//    @date 2024/3/23
 //
 namespace CamstarClient.Entity {
     using System.ComponentModel.DataAnnotations;
@@ -17,7 +17,19 @@ namespace CamstarClient.Entity {
     
     [Table("PRODUCTBASE")]
     public class ProductBase : RevisionBase {
+        [Column("PRODUCTNAME")]
+        public new string Name {
+            get; set;
+        }
+        [Column("ICONID")]
+        public new System.Nullable<int> IconId {
+            get; set;
+        }
         public new virtual Product RevOfRcd {
+            get; set;
+        }
+        [Column("CHANGECOUNT")]
+        public new System.Nullable<int> ChangeCount {
             get; set;
         }
         [Column("PRODUCTBASEID")]
@@ -25,6 +37,9 @@ namespace CamstarClient.Entity {
         public new string InstanceID {
             get; set;
         }
-        public virtual ICollection<Product> Revisions { get; set; }
+        [Column("CDOTYPEID")]
+        public new System.Nullable<int> CDOTypeId {
+            get; set;
+        }
     }
 }

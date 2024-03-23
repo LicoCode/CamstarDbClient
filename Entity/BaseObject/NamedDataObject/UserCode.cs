@@ -9,14 +9,30 @@
 
 // 
 //    @author lichong
-//    @date 2024/3/22
+//    @date 2024/3/23
 //
 namespace CamstarClient.Entity {
     using System.ComponentModel.DataAnnotations;
     using System.ComponentModel.DataAnnotations.Schema;
     
+    [NotMapped()]
     public abstract class UserCode : NamedDataObject {
+        public new string Name {
+            get; set;
+        }
+        public new string Description {
+            get; set;
+        }
+        public new System.Nullable<int> ChangeCount {
+            get; set;
+        }
         public new string InstanceID {
+            get; set;
+        }
+        public new System.Nullable<int> CDOTypeId {
+            get; set;
+        }
+        public new string Notes {
             get; set;
         }
     }

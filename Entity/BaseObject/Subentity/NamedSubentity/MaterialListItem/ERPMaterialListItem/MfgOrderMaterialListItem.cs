@@ -9,7 +9,7 @@
 
 // 
 //    @author lichong
-//    @date 2024/3/22
+//    @date 2024/3/23
 //
 namespace CamstarClient.Entity {
     using System.ComponentModel.DataAnnotations;
@@ -17,10 +17,69 @@ namespace CamstarClient.Entity {
     
     [Table("MFGORDERMATERIALLISTITEM")]
     public class MfgOrderMaterialListItem : ERPMaterialListItem {
+        public new virtual RouteStep RouteStep {
+            get; set;
+        }
+        [Column("EFFECTIVEFROMDATE")]
+        public new System.Nullable<System.DateTime> EffectiveFromDate {
+            get; set;
+        }
+        [Column("EFFECTIVETHRUDATE")]
+        public new System.Nullable<System.DateTime> EffectiveThruDate {
+            get; set;
+        }
+        [Column("ISSUECONTROL")]
+        public new IssueControlEnum IssueControl {
+            get; set;
+        }
+        [Column("QTYREQUIRED")]
+        public new System.Nullable<double> QtyRequired {
+            get; set;
+        }
+        [Column("REFERENCEDESIGNATOR")]
+        public new string ReferenceDesignator {
+            get; set;
+        }
+        [Column("SCRAPPERCENT")]
+        public new System.Nullable<double> ScrapPercent {
+            get; set;
+        }
+        [Column("SETUPQTY")]
+        public new System.Nullable<double> SetupQty {
+            get; set;
+        }
         public new virtual UOM UOM {
             get; set;
         }
+        [Column("VENDORCONTROL")]
+        public new System.Nullable<bool> VendorControl {
+            get; set;
+        }
+        [Column("ALLOWSUBSTITUTION")]
+        public new System.Nullable<bool> AllowSubstitution {
+            get; set;
+        }
+        [Column("ISENABLED")]
+        public new System.Nullable<bool> IsEnabled {
+            get; set;
+        }
+        [Column("ERPLINEITEM")]
+        public new string ERPLineItem {
+            get; set;
+        }
         public new virtual Product Product {
+            get; set;
+        }
+        [Column("ALLOWOVERCONSUMPTION")]
+        public new System.Nullable<bool> AllowOverConsumption {
+            get; set;
+        }
+        [Column("ALLOWUNDERCONSUMPTION")]
+        public new System.Nullable<bool> AllowUnderConsumption {
+            get; set;
+        }
+        [Column("CDOTYPEID")]
+        public new System.Nullable<int> CDOTypeId {
             get; set;
         }
         [Column("MFGORDERMATERIALLISTITEMID")]
@@ -28,7 +87,15 @@ namespace CamstarClient.Entity {
         public new string InstanceID {
             get; set;
         }
-        public new virtual BaseObject Parent {
+        [Column("CHANGECOUNT")]
+        public new System.Nullable<int> ChangeCount {
+            get; set;
+        }
+        public new virtual MfgOrder Parent {
+            get; set;
+        }
+        [Column("MFGORDERMATERIALLISTITEMNAME")]
+        public new string Name {
             get; set;
         }
         public new virtual Spec Spec {

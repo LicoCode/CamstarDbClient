@@ -9,7 +9,7 @@
 
 // 
 //    @author lichong
-//    @date 2024/3/22
+//    @date 2024/3/23
 //
 namespace CamstarClient.Entity {
     using System.ComponentModel.DataAnnotations;
@@ -20,8 +20,48 @@ namespace CamstarClient.Entity {
         public virtual Spec Spec {
             get; set;
         }
+        [Column("SEQUENCE")]
+        public new System.Nullable<int> Sequence {
+            get; set;
+        }
+        [Column("WORKFLOWSTEPNAME")]
+        public new string Name {
+            get; set;
+        }
+        [Column("DESCRIPTION")]
+        public new string Description {
+            get; set;
+        }
+        [Column("NOTES")]
+        public new string Notes {
+            get; set;
+        }
+        [Column("STEPTYPE")]
+        public new System.Nullable<int> StepType {
+            get; set;
+        }
+        [Column("CHANGECOUNT")]
+        public new System.Nullable<int> ChangeCount {
+            get; set;
+        }
         [Column("ISROUTESTEPNAME")]
         public string isRouteStepName {
+            get; set;
+        }
+        [Column("WORKFLOWSTEPID")]
+        [Key()]
+        public new string InstanceID
+        {
+            get; set;
+        }
+        [Column("ISLASTSTEP")]
+        public System.Nullable<bool> IsLastStep
+        {
+            get; set;
+        }
+        [Column("CDOTYPEID")]
+        public new System.Nullable<int> CDOTypeId
+        {
             get; set;
         }
     }

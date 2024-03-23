@@ -9,7 +9,7 @@
 
 // 
 //    @author lichong
-//    @date 2024/3/22
+//    @date 2024/3/23
 //
 namespace CamstarClient.Entity {
     using System.ComponentModel.DataAnnotations;
@@ -17,6 +17,9 @@ namespace CamstarClient.Entity {
     
     [Table("PRODUCT")]
     public class Product : RevisionedObject {
+        public virtual ProductFamily ProductFamily {
+            get; set;
+        }
         public virtual ProductType ProductType {
             get; set;
         }
@@ -26,16 +29,43 @@ namespace CamstarClient.Entity {
         public virtual Customer Customer {
             get; set;
         }
+        [Column("PRODUCTREVISION")]
+        public new string Revision {
+            get; set;
+        }
         public virtual UOM StdStartUOM {
             get; set;
         }
         public new virtual ProductBase Base {
             get; set;
         }
-        
+        [Column("STATUS")]
+        public new StatusEnum Status {
+            get; set;
+        }
+        [Column("ISFROZEN")]
+        public new System.Nullable<bool> IsFrozen {
+            get; set;
+        }
+        [Column("DESCRIPTION")]
+        public new string Description {
+            get; set;
+        }
+        [Column("CHANGECOUNT")]
+        public new System.Nullable<int> ChangeCount {
+            get; set;
+        }
         [Column("PRODUCTID")]
         [Key()]
         public new string InstanceID {
+            get; set;
+        }
+        [Column("CDOTYPEID")]
+        public new System.Nullable<int> CDOTypeId {
+            get; set;
+        }
+        [Column("NOTES")]
+        public new string Notes {
             get; set;
         }
         [Column("OBJECTCATEGORY")]
@@ -59,7 +89,7 @@ namespace CamstarClient.Entity {
             get; set;
         }
         [Column("MFGORDERREQUIRED")]
-        public bool MfgOrderRequired {
+        public System.Nullable<bool> MfgOrderRequired {
             get; set;
         }
         public virtual StartReason StdStartReason {

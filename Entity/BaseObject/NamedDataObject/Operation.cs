@@ -9,7 +9,7 @@
 
 // 
 //    @author lichong
-//    @date 2024/3/22
+//    @date 2024/3/23
 //
 namespace CamstarClient.Entity {
     using System.ComponentModel.DataAnnotations;
@@ -29,6 +29,14 @@ namespace CamstarClient.Entity {
         public virtual ComponentDefectReasonGroup ComponentDefectReasons {
             get; set;
         }
+        [Column("OPERATIONNAME")]
+        public new string Name {
+            get; set;
+        }
+        [Column("DESCRIPTION")]
+        public new string Description {
+            get; set;
+        }
         public virtual BuyReasonGroup BuyReasons {
             get; set;
         }
@@ -36,7 +44,7 @@ namespace CamstarClient.Entity {
             get; set;
         }
         [Column("USEQUEUE")]
-        public bool UseQueue {
+        public System.Nullable<bool> UseQueue {
             get; set;
         }
         public virtual ContainerLevel ThruputReportingLevel {
@@ -46,12 +54,24 @@ namespace CamstarClient.Entity {
             get; set;
         }
         [Column("AUTOADJUSTLIMIT")]
-        public double AutoAdjustLimit {
+        public System.Nullable<double> AutoAdjustLimit {
+            get; set;
+        }
+        [Column("CHANGECOUNT")]
+        public new System.Nullable<int> ChangeCount {
             get; set;
         }
         [Column("OPERATIONID")]
         [Key()]
         public new string InstanceID {
+            get; set;
+        }
+        [Column("CDOTYPEID")]
+        public new System.Nullable<int> CDOTypeId {
+            get; set;
+        }
+        [Column("NOTES")]
+        public new string Notes {
             get; set;
         }
         public virtual PrintQueue PrintQueue {

@@ -9,7 +9,7 @@
 
 // 
 //    @author lichong
-//    @date 2024/3/22
+//    @date 2024/3/23
 //
 namespace CamstarClient.Entity {
     using System.ComponentModel.DataAnnotations;
@@ -23,9 +23,33 @@ namespace CamstarClient.Entity {
         public new virtual ICollection<NamedObjectGroup> Groups {
             get; set;
         }
+        [Column("ENTRYTYPE")]
+        public new string EntryType {
+            get; set;
+        }
+        [Column("CHANGECOUNT")]
+        public new System.Nullable<int> ChangeCount {
+            get; set;
+        }
+        [Column("DESCRIPTION")]
+        public new string Description {
+            get; set;
+        }
+        [Column("NAMEDOBJECTGROUPNAME")]
+        public new string Name {
+            get; set;
+        }
         [Column("NAMEDOBJECTGROUPID")]
         [Key()]
         public new string InstanceID {
+            get; set;
+        }
+        [Column("CDOTYPEID")]
+        public new System.Nullable<int> CDOTypeId {
+            get; set;
+        }
+        [Column("NOTES")]
+        public new string Notes {
             get; set;
         }
     }

@@ -9,56 +9,55 @@
 
 // 
 //    @author lichong
-//    @date 2024/3/22
+//    @date 2024/3/23
 //
 namespace CamstarClient.Entity {
     using System.ComponentModel.DataAnnotations;
     using System.ComponentModel.DataAnnotations.Schema;
     
     [Table("CONTDEFECTREASONGROUP")]
-    public class ContainerDefectReasonGroup : UserCodeGroup
-    {
-        public virtual ICollection<ContainerDefectReasonGroup> Groups {
+    public class ContainerDefectReasonGroup : UserCodeGroup {
+        public new virtual ICollection<ContainerDefectReasonGroup> Groups {
             get; set;
         }
-        public virtual ICollection<ContainerDefectReason> Entries {
+        public new virtual ICollection<ContainerDefectReason> Entries {
             get; set;
         }
         [Column("CHANGECOUNT")]
-        public int ChangeCount {
+        public new System.Nullable<int> ChangeCount {
             get; set;
         }
         [Column("DEFECTREASONGROUPID")]
         [Key()]
-        public string InstanceID {
+        public new string InstanceID {
             get; set;
         }
         [Column("DEFECTREASONGROUPNAME")]
-        public string Name {
+        public new string Name {
             get; set;
         }
         [Column("ISFROZEN")]
-        public bool IsFrozen {
+        public new System.Nullable<bool> IsFrozen {
             get; set;
         }
         [Column("ICONID")]
-        public int IconId {
+        public new System.Nullable<int> IconId {
             get; set;
         }
         [Column("DESCRIPTION")]
-        public string Description {
+        public new string Description {
             get; set;
         }
         [Column("ENTRYTYPE")]
-        public string EntryType {
+        public new string EntryType {
             get; set;
         }
         [Column("CDOTYPEID")]
-        public int CDOTypeId {
+        public new System.Nullable<int> CDOTypeId {
             get; set;
         }
         [Column("NOTES")]
-        public string Notes {
+        public new string Notes {
             get; set;
         }
     }

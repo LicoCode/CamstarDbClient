@@ -9,33 +9,29 @@
 
 // 
 //    @author lichong
-//    @date 2024/3/22
+//    @date 2024/3/23
 //
 namespace CamstarClient.Entity {
     using System.ComponentModel.DataAnnotations;
     using System.ComponentModel.DataAnnotations.Schema;
     
     [Table("EMPLOYEE")]
-    public class Employee : NamedDataObject
-    {
-        public virtual SessionValues SessionValues {
-            get; set;
-        }
+    public class Employee : NamedDataObject {
         [Column("EMPLOYEEID")]
         [Key()]
-        public string InstanceID {
+        public new string InstanceID {
             get; set;
         }
         [Column("EMPLOYEENAME")]
-        public string Name {
+        public new string Name {
             get; set;
         }
         [Column("DESCRIPTION")]
-        public string Description {
+        public new string Description {
             get; set;
         }
         [Column("NOTES")]
-        public string Notes {
+        public new string Notes {
             get; set;
         }
         [Column("FULLNAME")]
@@ -47,15 +43,15 @@ namespace CamstarClient.Entity {
             get; set;
         }
         [Column("CANLOGIN")]
-        public bool CanLogin {
+        public System.Nullable<bool> CanLogin {
             get; set;
         }
         [Column("CHANGECOUNT")]
-        public int ChangeCount {
+        public new System.Nullable<int> ChangeCount {
             get; set;
         }
         [Column("CDOTYPEID")]
-        public int CDOTypeId {
+        public new System.Nullable<int> CDOTypeId {
             get; set;
         }
         [Column("DOMAINNAME")]

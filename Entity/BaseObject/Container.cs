@@ -9,7 +9,7 @@
 
 // 
 //    @author lichong
-//    @date 2024/3/22
+//    @date 2024/3/23
 //
 namespace CamstarClient.Entity {
     using System.ComponentModel.DataAnnotations;
@@ -40,14 +40,11 @@ namespace CamstarClient.Entity {
         public virtual ContainerLevel Level {
             get; set;
         }
-        public virtual Container OriginalContainer {
-            get; set;
-        }
         public virtual Container SplitFrom {
             get; set;
         }
         [Column("ORIGINALQTY")]
-        public double OriginalQty {
+        public System.Nullable<double> OriginalQty {
             get; set;
         }
         public virtual Container Parent {
@@ -60,7 +57,7 @@ namespace CamstarClient.Entity {
             get; set;
         }
         [Column("QTY")]
-        public double Qty {
+        public System.Nullable<double> Qty {
             get; set;
         }
         [Column("CONTAINERID")]
@@ -75,26 +72,26 @@ namespace CamstarClient.Entity {
             get; set;
         }
         [Column("CHANGECOUNT")]
-        public int ChangeCount {
+        public new System.Nullable<int> ChangeCount {
             get; set;
         }
         public virtual Container IssuedToContainer {
             get; set;
         }
         [Column("ONHOLDDATE")]
-        public System.DateTime OnHoldDate {
+        public System.Nullable<System.DateTime> OnHoldDate {
             get; set;
         }
         [Column("CURRENTHOLDCOUNT")]
-        public int CurrentHoldCount {
+        public System.Nullable<int> CurrentHoldCount {
             get; set;
         }
         [Column("CDOTYPEID")]
-        public int CDOTypeId {
+        public new System.Nullable<int> CDOTypeId {
             get; set;
         }
         [Column("EXPIRATIONDATE")]
-        public System.DateTime ExpirationDate {
+        public System.Nullable<System.DateTime> ExpirationDate {
             get; set;
         }
         public virtual Container StartParentContainer {
@@ -107,5 +104,6 @@ namespace CamstarClient.Entity {
         public virtual MfgLine MfgLine {
             get; set;
         }
+        public virtual ICollection<UserAttribute> Attributes { get; set; }
     }
 }

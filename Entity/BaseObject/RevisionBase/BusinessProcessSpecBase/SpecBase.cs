@@ -9,7 +9,7 @@
 
 // 
 //    @author lichong
-//    @date 2024/3/22
+//    @date 2024/3/23
 //
 namespace CamstarClient.Entity {
     using System.ComponentModel.DataAnnotations;
@@ -17,12 +17,28 @@ namespace CamstarClient.Entity {
     
     [Table("SPECBASE")]
     public class SpecBase : BusinessProcessSpecBase {
+        [Column("SPECNAME")]
+        public new string Name {
+            get; set;
+        }
+        [Column("ICONID")]
+        public new System.Nullable<int> IconId {
+            get; set;
+        }
         public new virtual Spec RevOfRcd {
+            get; set;
+        }
+        [Column("CHANGECOUNT")]
+        public new System.Nullable<int> ChangeCount {
             get; set;
         }
         [Column("SPECBASEID")]
         [Key()]
         public new string InstanceID {
+            get; set;
+        }
+        [Column("CDOTYPEID")]
+        public new System.Nullable<int> CDOTypeId {
             get; set;
         }
     }

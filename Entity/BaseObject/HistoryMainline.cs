@@ -9,7 +9,7 @@
 
 // 
 //    @author lichong
-//    @date 2024/3/22
+//    @date 2024/3/23
 //
 namespace CamstarClient.Entity {
     using System.ComponentModel.DataAnnotations;
@@ -22,19 +22,16 @@ namespace CamstarClient.Entity {
         public new string InstanceID {
             get; set;
         }
-        public virtual BaseObject TxnId {
-            get; set;
-        }
         [Column("STATUS")]
         public StatusEnum Status {
             get; set;
         }
         [Column("TXNDATE")]
-        public System.DateTime TxnDate {
+        public System.Nullable<System.DateTime> TxnDate {
             get; set;
         }
         [Column("SYSTEMDATE")]
-        public System.DateTime SystemDate {
+        public System.Nullable<System.DateTime> SystemDate {
             get; set;
         }
         public virtual Factory Factory {
@@ -44,11 +41,11 @@ namespace CamstarClient.Entity {
             get; set;
         }
         [Column("CLIENT")]
-        public int Client {
+        public System.Nullable<int> Client {
             get; set;
         }
         [Column("SERVER")]
-        public int Server {
+        public System.Nullable<int> Server {
             get; set;
         }
         public virtual Container Container {
@@ -64,17 +61,22 @@ namespace CamstarClient.Entity {
         public string Comments {
             get; set;
         }
-        public virtual BaseObject HistoryId {
-            get; set;
-        }
         public virtual Owner Owner {
             get; set;
         }
         public virtual Product Product {
             get; set;
         }
+        [Column("CHANGECOUNT")]
+        public new System.Nullable<int> ChangeCount {
+            get; set;
+        }
         [Column("INREWORK")]
-        public bool InRework {
+        public System.Nullable<bool> InRework {
+            get; set;
+        }
+        [Column("CDOTYPEID")]
+        public new System.Nullable<int> CDOTypeId {
             get; set;
         }
         public virtual SpecStep WorkflowStep {
@@ -95,27 +97,27 @@ namespace CamstarClient.Entity {
             get; set;
         }
         [Column("TOQTY")]
-        public double ToQty {
+        public System.Nullable<double> ToQty {
             get; set;
         }
         [Column("QTY")]
-        public double Qty {
+        public System.Nullable<double> Qty {
             get; set;
         }
         [Column("MOVEINQTY")]
-        public double MoveInQty {
+        public System.Nullable<double> MoveInQty {
             get; set;
         }
         [Column("LASTMOVEOUTDATE")]
-        public System.DateTime LastMoveOutDate {
+        public System.Nullable<System.DateTime> LastMoveOutDate {
             get; set;
         }
         [Column("TXNSEQUENCE")]
-        public int TxnSequence {
+        public System.Nullable<int> TxnSequence {
             get; set;
         }
         [Column("CHILDCOUNT")]
-        public int ChildCount {
+        public System.Nullable<int> ChildCount {
             get; set;
         }
         [Column("CONTAINERNAME")]
@@ -123,7 +125,7 @@ namespace CamstarClient.Entity {
             get; set;
         }
         [Column("MOVEINDATE")]
-        public System.DateTime MoveInDate {
+        public System.Nullable<System.DateTime> MoveInDate {
             get; set;
         }
         [Column("SERVERNAME")]

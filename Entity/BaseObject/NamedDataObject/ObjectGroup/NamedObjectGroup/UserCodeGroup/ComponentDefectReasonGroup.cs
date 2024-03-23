@@ -9,48 +9,47 @@
 
 // 
 //    @author lichong
-//    @date 2024/3/22
+//    @date 2024/3/23
 //
 namespace CamstarClient.Entity {
     using System.ComponentModel.DataAnnotations;
     using System.ComponentModel.DataAnnotations.Schema;
     
     [Table("COMPDEFECTREASONGROUP")]
-    public class ComponentDefectReasonGroup : UserCodeGroup
-    {
+    public class ComponentDefectReasonGroup : UserCodeGroup {
         [Column("CHANGECOUNT")]
-        public int ChangeCount {
+        public new System.Nullable<int> ChangeCount {
             get; set;
         }
         [Column("COMPDEFECTREASONGROUPID")]
         [Key()]
-        public string InstanceID {
+        public new string InstanceID {
             get; set;
         }
         [Column("DESCRIPTION")]
-        public string Description {
+        public new string Description {
             get; set;
         }
         [Column("COMPDEFECTREASONGROUPNAME")]
-        public string Name {
+        public new string Name {
             get; set;
         }
         [Column("ENTRYTYPE")]
-        public string EntryType {
+        public new string EntryType {
             get; set;
         }
-        public virtual ICollection<ComponentDefectReason> Entries {
+        public new virtual ICollection<ComponentDefectReason> Entries {
             get; set;
         }
-        public virtual ICollection<ComponentDefectReasonGroup> Groups {
+        public new virtual ICollection<ComponentDefectReasonGroup> Groups {
             get; set;
         }
         [Column("CDOTYPEID")]
-        public int CDOTypeId {
+        public new System.Nullable<int> CDOTypeId {
             get; set;
         }
         [Column("NOTES")]
-        public string Notes {
+        public new string Notes {
             get; set;
         }
     }

@@ -9,7 +9,7 @@
 
 // 
 //    @author lichong
-//    @date 2024/3/22
+//    @date 2024/3/23
 //
 namespace CamstarClient.Entity {
     using System.ComponentModel.DataAnnotations;
@@ -17,9 +17,29 @@ namespace CamstarClient.Entity {
     
     [Table("A_MFGLINE")]
     public class MfgLine : ES_NDOs {
+        [Column("NOTES")]
+        public new string Notes {
+            get; set;
+        }
+        [Column("CDOTYPEID")]
+        public new System.Nullable<int> CDOTypeId {
+            get; set;
+        }
         [Column("MFGLINEID")]
         [Key()]
         public new string InstanceID {
+            get; set;
+        }
+        [Column("DESCRIPTION")]
+        public new string Description {
+            get; set;
+        }
+        [Column("CHANGECOUNT")]
+        public new System.Nullable<int> ChangeCount {
+            get; set;
+        }
+        [Column("MFGLINENAME")]
+        public new string Name {
             get; set;
         }
     }

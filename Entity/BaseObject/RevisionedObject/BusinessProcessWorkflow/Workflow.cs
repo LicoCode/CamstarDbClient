@@ -9,7 +9,7 @@
 
 // 
 //    @author lichong
-//    @date 2024/3/22
+//    @date 2024/3/23
 //
 namespace CamstarClient.Entity {
     using System.ComponentModel.DataAnnotations;
@@ -17,15 +17,39 @@ namespace CamstarClient.Entity {
     
     [Table("WORKFLOW")]
     public class Workflow : BusinessProcessWorkflow {
-        public new virtual Step FirstStep {
+        public new virtual SpecStep FirstStep {
             get; set;
         }
         public new virtual WorkflowBase Base {
             get; set;
         }
+        [Column("WORKFLOWREVISION")]
+        public new string Revision {
+            get; set;
+        }
+        [Column("STATUS")]
+        public new StatusEnum Status {
+            get; set;
+        }
+        [Column("DESCRIPTION")]
+        public new string Description {
+            get; set;
+        }
+        [Column("CHANGECOUNT")]
+        public new System.Nullable<int> ChangeCount {
+            get; set;
+        }
         [Column("WORKFLOWID")]
         [Key()]
         public new string InstanceID {
+            get; set;
+        }
+        [Column("CDOTYPEID")]
+        public new System.Nullable<int> CDOTypeId {
+            get; set;
+        }
+        [Column("NOTES")]
+        public new string Notes {
             get; set;
         }
     }

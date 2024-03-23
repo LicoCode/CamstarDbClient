@@ -9,7 +9,7 @@
 
 // 
 //    @author lichong
-//    @date 2024/3/22
+//    @date 2024/3/23
 //
 namespace CamstarClient.Entity {
     using System.ComponentModel.DataAnnotations;
@@ -24,14 +24,30 @@ namespace CamstarClient.Entity {
             get; set;
         }
         [Column("MAXQUEUETIME")]
-        public double MaxQueueTime {
+        public System.Nullable<double> MaxQueueTime {
             get; set;
         }
         [Column("WARNINGQUEUETIME")]
-        public double WarningQueueTime {
+        public System.Nullable<double> WarningQueueTime {
             get; set;
         }
         public new virtual SpecBase Base {
+            get; set;
+        }
+        [Column("SPECREVISION")]
+        public new string Revision {
+            get; set;
+        }
+        [Column("STATUS")]
+        public new StatusEnum Status {
+            get; set;
+        }
+        [Column("DESCRIPTION")]
+        public new string Description {
+            get; set;
+        }
+        [Column("CHANGECOUNT")]
+        public new System.Nullable<int> ChangeCount {
             get; set;
         }
         [Column("SPECID")]
@@ -39,26 +55,34 @@ namespace CamstarClient.Entity {
         public new string InstanceID {
             get; set;
         }
+        [Column("CDOTYPEID")]
+        public new System.Nullable<int> CDOTypeId {
+            get; set;
+        }
+        [Column("NOTES")]
+        public new string Notes {
+            get; set;
+        }
         [Column("AUTODISASSOCIATE")]
-        public bool AutoDisassociate {
+        public System.Nullable<bool> AutoDisassociate {
             get; set;
         }
         public virtual IssueDifferenceReason DefaultIssueDifferenceReason {
             get; set;
         }
         [Column("AUTOCLOSE")]
-        public bool AutoClose {
+        public System.Nullable<bool> AutoClose {
             get; set;
         }
         public virtual MfgLine MfgLine {
             get; set;
         }
         [Column("AUTOCOMPONENTISSUE")]
-        public bool AutoComponentIssue {
+        public System.Nullable<bool> AutoComponentIssue {
             get; set;
         }
         [Column("ISMATERIALISSUE")]
-        public bool IsMaterialIssue {
+        public System.Nullable<bool> IsMaterialIssue {
             get; set;
         }
     }

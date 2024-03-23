@@ -9,7 +9,7 @@
 
 // 
 //    @author lichong
-//    @date 2024/3/22
+//    @date 2024/3/23
 //
 namespace CamstarClient.Entity {
     using System.ComponentModel.DataAnnotations;
@@ -19,37 +19,37 @@ namespace CamstarClient.Entity {
     public class BuyReasonGroup : UserCodeGroup {
         [Column("BUYREASONGROUPID")]
         [Key()]
-        public string InstanceID {
+        public new string InstanceID {
             get; set;
         }
         [Column("CHANGECOUNT")]
-        public int ChangeCount {
+        public new System.Nullable<int> ChangeCount {
             get; set;
         }
         [Column("DESCRIPTION")]
-        public string Description {
+        public new string Description {
             get; set;
         }
         [Column("BUYREASONGROUPNAME")]
-        public string Name {
+        public new string Name {
             get; set;
         }
-        public virtual ICollection<BuyReason> Entries {
+        public new virtual ICollection<BuyReason> Entries {
             get; set;
         }
         [Column("ENTRYTYPE")]
-        public string EntryType {
+        public new string EntryType {
             get; set;
         }
-        public virtual ICollection<BuyReasonGroup> Groups {
+        public new virtual ICollection<BuyReasonGroup> Groups {
             get; set;
         }
         [Column("CDOTYPEID")]
-        public int CDOTypeId {
+        public new System.Nullable<int> CDOTypeId {
             get; set;
         }
         [Column("NOTES")]
-        public string Notes {
+        public new string Notes {
             get; set;
         }
     }

@@ -9,14 +9,69 @@
 
 // 
 //    @author lichong
-//    @date 2024/3/22
+//    @date 2024/3/23
 //
 namespace CamstarClient.Entity {
     using System.ComponentModel.DataAnnotations;
     using System.ComponentModel.DataAnnotations.Schema;
     
+    [NotMapped()]
     public abstract class ERPMaterialListItem : MaterialListItem {
+        public virtual RouteStep RouteStep {
+            get; set;
+        }
+        public new System.Nullable<System.DateTime> EffectiveFromDate {
+            get; set;
+        }
+        public new System.Nullable<System.DateTime> EffectiveThruDate {
+            get; set;
+        }
+        public new IssueControlEnum IssueControl {
+            get; set;
+        }
+        public new System.Nullable<double> QtyRequired {
+            get; set;
+        }
+        public new string ReferenceDesignator {
+            get; set;
+        }
+        public new System.Nullable<double> ScrapPercent {
+            get; set;
+        }
+        public new virtual UOM UOM {
+            get; set;
+        }
+        public new System.Nullable<bool> AllowSubstitution {
+            get; set;
+        }
+        public new System.Nullable<bool> IsEnabled {
+            get; set;
+        }
+        public new virtual Product Product {
+            get; set;
+        }
+        public new System.Nullable<bool> AllowOverConsumption {
+            get; set;
+        }
+        public new System.Nullable<bool> AllowUnderConsumption {
+            get; set;
+        }
+        public new System.Nullable<int> CDOTypeId {
+            get; set;
+        }
+        public new System.Nullable<int> ChangeCount {
+            get; set;
+        }
         public new string InstanceID {
+            get; set;
+        }
+        public new virtual BaseObject Parent {
+            get; set;
+        }
+        public new string Name {
+            get; set;
+        }
+        public virtual Spec Spec {
             get; set;
         }
     }
