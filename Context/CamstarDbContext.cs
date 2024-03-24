@@ -435,9 +435,9 @@ internal class CamstarDbContext : DbContext
 
         //ProductType
 
-        /* 
-       //ERPMaterialListItem
-       */
+        
+        //ERPMaterialListItem
+       
 
 
     }
