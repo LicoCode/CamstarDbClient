@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "jCSN7Gn3SJ3BT23BpC5Lgvf8U0171n4wAYnuahF798dT1oaGImhDZgr73HBwi8Qz9wj4byOIrKpl5kvK8fbYgw==",
+  "dgSpecHash": "vVjp6sv87uR9Jlw8gupQYm/rHycw+Eh/xZ1sK8BaIeRgHWDLsqQrNFj7I5WCqyAE3Ujcp+yGnjaMpURhWOiFgg==",
   "success": true,
-  "projectFilePath": "C:\\repos\\CamstarClient\\CamstarClient.csproj",
+  "projectFilePath": "C:\\repos\\CamstarDbClient\\CamstarDbClient.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Administrator\\.nuget\\packages\\azure.core\\1.24.0\\azure.core.1.24.0.nupkg.sha512",
     "C:\\Users\\Administrator\\.nuget\\packages\\azure.identity\\1.6.0\\azure.identity.1.6.0.nupkg.sha512",
