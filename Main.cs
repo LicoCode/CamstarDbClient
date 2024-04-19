@@ -9,7 +9,7 @@ namespace CamstarDbClient
         {
             //为CamstarDbClient配置数据库信息
             DbConfiguration.Type = "Oracle";
-            DbConfiguration.DefaultConnection = "user id=OPCENTERDBUSER;data source=localhost:1521/orclpdb;password=Oracle.123;";
+            DbConfiguration.DefaultConnection = "user id=OPCENTER;data source=localhost:1521/orclpdb;password=*******;";
             
 
             using (var client = new DbClient())
