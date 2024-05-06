@@ -2,9 +2,9 @@ using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
-using CamstarDbClient.CamstarEntities;
+using CamstarDbClient.Entities;
 
-namespace CamstarDbClient.CamstarEntities
+namespace CamstarDbClient.Entities
 {
     ///    @Description A Manufacturing Order is a request to manufacture a product. Manufacturing orders are typically originated to fulfill a sales order or inventory requirements and are often a link between MES and an ERP system. A Manufacturing Order can contain a list of product containers. The relationship of a container to a manufacturing order is established and maintained in the containers data record. This information is used to provide WIP status by manufacturing order and WIP updates to the ERP system.
     ///    @author lichong
@@ -55,6 +55,20 @@ namespace CamstarDbClient.CamstarEntities
         public virtual UOM? UOM { get; set; }
         [ForeignKey("ISWORKFLOWBASEID")]
         public virtual WorkflowBase? isWorkflowBase { get; set; }
+
+        [Column("ECNCOMFIRMSTATUS")]
+        public bool? ECNComfirmStatus { get; set; }
+
+        [ForeignKey("PRODUCTID")]
+        public virtual Product? Product { get; set; }
+        [ForeignKey("PRODUCTBASEID")]
+        public virtual ProductBase? ProductBase { get; set; }
+
+        [Column("PLANNEDSTARTDATE")]
+        public DateTime? PlannedStartDate { get; set; }
+
+        public virtual ICollection<T_ECNConfirmationDetail>? T_ECNConfirmationDetails { get; set; }
+
     }
 }
 

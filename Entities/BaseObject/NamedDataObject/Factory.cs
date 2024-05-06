@@ -2,9 +2,9 @@ using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
-using CamstarDbClient.CamstarEntities;
+using CamstarDbClient.Entities;
 
-namespace CamstarDbClient.CamstarEntities
+namespace CamstarDbClient.Entities
 {
     ///    @Description A Factory often represent a physical or logical plant. A Factory can be any division, department, section, or group that is separated for accounting and reporting purposes. A Factory often represents a physical manufacturing building. 
     ///    @author lichong

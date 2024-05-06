@@ -11,7 +11,7 @@
 //    @author lichong
 //    @date 2024/3/24
 //
-namespace CamstarDbClient.CamstarEntities.Enum {
+namespace CamstarDbClient.Entities.Enum {
     
     public enum StatusEnum {
         Active = 1,

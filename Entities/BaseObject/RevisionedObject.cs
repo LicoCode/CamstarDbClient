@@ -2,9 +2,9 @@ using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
-using CamstarDbClient.CamstarEntities;
+using CamstarDbClient.Entities;
 
-namespace CamstarDbClient.CamstarEntities
+namespace CamstarDbClient.Entities
 {
     ///    @Description Attributes that are common to all CDOs that include revision control (for instances). There are two CDO Definitions for each; a Base Entity and a Revision Entity.
     ///    @author lichong

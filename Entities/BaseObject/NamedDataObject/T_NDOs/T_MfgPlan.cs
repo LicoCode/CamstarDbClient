@@ -2,9 +2,9 @@ using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
-using CamstarDbClient.CamstarEntities;
+using CamstarDbClient.Entities;
 
-namespace CamstarDbClient.CamstarEntities
+namespace CamstarDbClient.Entities
 {
     ///    @Description Manufacturing Planning: which work orders are planned to be produced in a specified time period, as well as the current production status, including the quantity completed, the planned production quantity
     ///    @author lichong

@@ -2,9 +2,9 @@ using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
-using CamstarDbClient.CamstarEntities;
+using CamstarDbClient.Entities;
 
-namespace CamstarDbClient.CamstarEntities
+namespace CamstarDbClient.Entities
 {
     ///    @Description Session Values are used to determine default values. An instance is associated with each User defined to the application (that can log-in). At login the values are copied for use by that session. Values can be modified during the session and saved or discarded when the session completes If they are saved, the updated values will be used for initialization at the next log-in (for that User).
     ///    @author lichong

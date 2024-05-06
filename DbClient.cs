@@ -1,6 +1,5 @@
-﻿using CamstarDbClient.CamstarEntities;
+﻿using CamstarDbClient.Entities;
 using CamstarDbClient.Context;
-using CamstarDbClient.CamstarEntities;
 using Microsoft.EntityFrameworkCore;
 
 namespace CamstarDbClient

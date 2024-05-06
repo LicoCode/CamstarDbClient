@@ -1,5 +1,8 @@
 # CamstarDbClient
 
 ```c#
-var Container = context.Containers.Where(c => c.Name == "").First();
+            using (var client = new DbClient())
+            {
+                Container data = client.GetContainerByName<Container>("20231201_P_02");
+            }
 ```

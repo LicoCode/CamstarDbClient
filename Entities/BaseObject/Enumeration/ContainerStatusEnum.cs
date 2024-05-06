@@ -1,4 +1,4 @@
-namespace CamstarDbClient.CamstarEntities
+namespace CamstarDbClient.Entities
 {
     ///    @Description Contains Status Codes for the Container.
     ///    @author lichong

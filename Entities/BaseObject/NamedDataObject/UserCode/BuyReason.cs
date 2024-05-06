@@ -11,10 +11,10 @@
 ///    @author lichong
 ///    @date 2024/3/24
 ///
-namespace CamstarDbClient.CamstarEntities {
+namespace CamstarDbClient.Entities {
     using System.ComponentModel.DataAnnotations;
     using System.ComponentModel.DataAnnotations.Schema;
-    using CamstarDbClient.CamstarEntities.Enum;
+    using CamstarDbClient.Entities.Enum;
     
     [Table("BUYREASON")]
     public class BuyReason : UserCode {

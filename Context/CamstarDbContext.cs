@@ -1,5 +1,5 @@
 ﻿using CamstarDbClient.Config;
-using CamstarDbClient.CamstarEntities;
+using CamstarDbClient.Entities;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
 using System.Diagnostics;

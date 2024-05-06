@@ -2,9 +2,9 @@ using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
-using CamstarDbClient.CamstarEntities;
+using CamstarDbClient.Entities;
 
-namespace CamstarDbClient.CamstarEntities
+namespace CamstarDbClient.Entities
 {
     ///    @Description The RevisionBase holds information common to all revisions of an object, plus information on which revision is the revision of record.  WorkflowBase is the specific type of RevisionBase used for a workflow, which defines the route and processing details required for a manufacturing process.
     ///    @author lichong

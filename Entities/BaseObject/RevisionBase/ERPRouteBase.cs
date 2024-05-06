@@ -2,9 +2,9 @@ using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
-using CamstarDbClient.CamstarEntities;
+using CamstarDbClient.Entities;
 
-namespace CamstarDbClient.CamstarEntities
+namespace CamstarDbClient.Entities
 {
     ///    @Description ERP Routes are the closest ERP concept to an InSite workflow.  The ERPRoute object in InSite is meant to be a miiror of the route definitions in the ERP, where the definition stored in the ERP is the "master" and the InSite ERPRoute is populated via LiveConnect.  The ERPRoute is used to be able to relate InSite Moves and ComponentIssues to the ERPStep where the transaction occurred.  Steps in an ERP route are usually defined at a more summarized level than is true for steps in an InSite workflow.
     ///    @author lichong
@@ -24,7 +24,8 @@ namespace CamstarDbClient.CamstarEntities
 
         [Column("ERPROUTENAME")]
         public string? Name { get; set; }
-
+        public virtual ERPRoute? RevOfRcd { get; set; }
+        public virtual ICollection<ERPRoute>? Revisions { get; set; }
     }
 }
 
@@ -37,7 +38,7 @@ namespace CamstarDbClient.CamstarContext
     {
         public void Configure(EntityTypeBuilder<ERPRouteBase> builder)
         {
-            //builder.HasOne(e => e.RevOfRcd).WithOne().HasForeignKey<ERPBOMBase>("REVOFRCDID").IsRequired(true);
+            builder.HasOne(e => e.RevOfRcd).WithOne().HasForeignKey<ERPRouteBase>("REVOFRCDID").IsRequired(true);
         }
     }
 }

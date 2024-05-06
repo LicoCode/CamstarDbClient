@@ -2,9 +2,9 @@ using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
-using CamstarDbClient.CamstarEntities;
+using CamstarDbClient.Entities;
 
-namespace CamstarDbClient.CamstarEntities
+namespace CamstarDbClient.Entities
 {
     ///    @Description A Container describes a discrete unit of work or a discrete quantity of material (i.e., batch of material, a serialized component or serialized piece of material, a uniquely identified package or vessel that contains product, etc.)  A Container can include quantity information (weight, count, etc.) directly, or it can include a grouping of other containers (child containers).
     ///    @author lichong
@@ -29,8 +29,6 @@ namespace CamstarDbClient.CamstarEntities
         [Column("DESCRIPTION")]
         public string? Description { get; set; }
 
-        public virtual Factory? Factory { get; set; }
-
         [ForeignKey("HOLDREASONID")]
         public virtual HoldReason? HoldReason { get; set; }
 
@@ -52,7 +50,7 @@ namespace CamstarDbClient.CamstarEntities
 
         [ForeignKey("OWNERID")]
         public virtual Owner? Owner { get; set; }
-        //[ForeignKey("PARENTCONTAINERID")]
+
         public virtual Container? Parent { get; set; }
 
         [ForeignKey("PRODUCTID")]
@@ -66,6 +64,7 @@ namespace CamstarDbClient.CamstarEntities
 
         [ForeignKey("UOMID")]
         public virtual UOM? UOM { get; set; }
+        public virtual ICollection<Container>? ChildContainers { get; set; }
 
     }
 }
@@ -79,7 +78,7 @@ namespace CamstarDbClient.CamstarContext
     {
         public void Configure(EntityTypeBuilder<Container> builder)
         {
-            builder.HasOne(e => e.Parent).WithMany().HasForeignKey("PARENTCONTAINERID").HasPrincipalKey(c => c.InstanceID).IsRequired(false);   
+            builder.HasOne(e => e.Parent).WithMany(e => e.ChildContainers).HasForeignKey("PARENTCONTAINERID").IsRequired(false);
         }
     }
 }
