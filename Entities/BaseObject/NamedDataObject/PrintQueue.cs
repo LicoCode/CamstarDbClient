@@ -2,15 +2,15 @@ using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
-using CamstarDbClient.Entities;
+using CamstarDb.Entities;
 
-namespace CamstarDbClient.Entities
+namespace CamstarDb.Entities
 {
     ///    @Description Printers InSite can use to print labels.
     ///    @author lichong
     ///    @date 2024/4/12
     [Table("PRINTQUEUE")]
-    public class PrintQueue: NamedDataObject
+    public class PrintQueue : NamedDataObject
     {
         [Column("CDOTYPEID")]
         public int? CDOTypeId { get; set; }
@@ -34,16 +34,17 @@ namespace CamstarDbClient.Entities
     }
 }
 
-namespace CamstarDbClient.CamstarContext
+namespace CamstarDb.Context
 {
-    public partial class CamstarDbContext : DbContext {
+    public partial class CamstarDbContext : DbContext
+    {
         public DbSet<PrintQueue> PrintQueues { get; set; }
     }
     public class PrintQueueEntityTypeConfiguration : IEntityTypeConfiguration<PrintQueue>
     {
         public void Configure(EntityTypeBuilder<PrintQueue> builder)
         {
-            
+
         }
     }
 }

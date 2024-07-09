@@ -2,9 +2,8 @@ using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
-using CamstarDbClient.Entities;
 
-namespace CamstarDbClient.Entities
+namespace CamstarDb.Entities
 {
     ///    @Description BaseObject
     ///    @author lichong

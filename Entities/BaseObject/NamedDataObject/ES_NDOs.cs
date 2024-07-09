@@ -2,15 +2,15 @@ using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
-using CamstarDbClient.Entities;
+using CamstarDb.Entities;
 
-namespace CamstarDbClient.Entities
+namespace CamstarDb.Entities
 {
     ///    @Description Superclass to contain all additional NDO objects.
     ///    @author lichong
     ///    @date 2024/4/12
     [NotMapped]
-    public class ES_NDOs: NamedDataObject
+    public class ES_NDOs : NamedDataObject
     {
         public int? CDOTypeId { get; set; }
 

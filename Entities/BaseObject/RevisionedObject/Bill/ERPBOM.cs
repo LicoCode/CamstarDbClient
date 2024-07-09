@@ -2,15 +2,15 @@ using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
-using CamstarDbClient.Entities;
+using CamstarDb.Entities;
 
-namespace CamstarDbClient.Entities
+namespace CamstarDb.Entities
 {
     ///    @Description A bill of material (BOM) defines the materials needed to produce a specific product.  An ERP BOM references steps in an ERP route instead of referencing steps in an InSite workflow.
     ///    @author lichong
     ///    @date 2024/4/12
     [Table("ERPBOM")]
-    public class ERPBOM: Bill
+    public class ERPBOM : Bill
     {
         [ForeignKey("ERPBOMBASEID")]
         public virtual ERPBOMBase? Base { get; set; }
@@ -34,19 +34,21 @@ namespace CamstarDbClient.Entities
         [Column("ERPBOMREVISION")]
         public string? Revision { get; set; }
 
+        public virtual ICollection<BOMMaterialListItem>? MaterialList { get; set; }
     }
 }
 
-namespace CamstarDbClient.CamstarContext
+namespace CamstarDb.Context
 {
-    public partial class CamstarDbContext : DbContext {
+    public partial class CamstarDbContext : DbContext
+    {
         public DbSet<ERPBOM> ERPBOMs { get; set; }
     }
     public class ERPBOMEntityTypeConfiguration : IEntityTypeConfiguration<ERPBOM>
     {
         public void Configure(EntityTypeBuilder<ERPBOM> builder)
         {
-            
+            builder.HasMany(e => e.MaterialList).WithOne().HasForeignKey("ERPBOMID").IsRequired(false);
         }
     }
 }

@@ -6,7 +6,7 @@ using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace CamstarDbClient.Context
+namespace CamstarDb.Context
 {
     public static class ModelBuilderExtensions
     {
@@ -18,8 +18,6 @@ namespace CamstarDbClient.Context
                                i.GetInterfaces().Any(
                                    i => i.IsGenericType &&
                                         i.GetGenericTypeDefinition() == typeof(IEntityTypeConfiguration<>)));
-
-
 
             foreach (var type in typesToRegister)
             {

@@ -2,15 +2,16 @@ using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
-using CamstarDbClient.Entities;
+using CamstarDb.Entities;
+using CamstarDb.Entities;
 
-namespace CamstarDbClient.Entities
+namespace CamstarDb.Entities
 {
     ///    @Description Stores the components loaded into the Resource. The ResourceComponentSetup must be used to add and remove the components for the Resource. During ComponentIssue, the information here will be used to provide the issue details if a Resource is provided.
     ///    @author lichong
     ///    @date 2024/4/12
     [Table("A_RESOURCECOMPONENTS")]
-    public class ResourceComponents: ES_Subentities
+    public class ResourceComponents : ES_Subentities
     {
         [Column("CDOTYPEID")]
         public int? CDOTypeId { get; set; }
@@ -38,16 +39,17 @@ namespace CamstarDbClient.Entities
     }
 }
 
-namespace CamstarDbClient.CamstarContext
+namespace CamstarDb.Context
 {
-    public partial class CamstarDbContext : DbContext {
+    public partial class CamstarDbContext : DbContext
+    {
         public DbSet<ResourceComponents> ResourceComponentss { get; set; }
     }
     public class ResourceComponentsEntityTypeConfiguration : IEntityTypeConfiguration<ResourceComponents>
     {
         public void Configure(EntityTypeBuilder<ResourceComponents> builder)
         {
-            
+
         }
     }
 }

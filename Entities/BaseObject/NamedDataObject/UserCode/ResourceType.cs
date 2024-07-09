@@ -2,15 +2,15 @@ using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
-using CamstarDbClient.Entities;
+using CamstarDb.Entities;
 
-namespace CamstarDbClient.Entities
+namespace CamstarDb.Entities
 {
     ///    @Description Resource Type, a Resource categorization.  Resources with the same Resource Type may share the same Resources Status Model.
     ///    @author lichong
     ///    @date 2024/4/12
     [Table("RESOURCETYPE")]
-    public class ResourceType: UserCode
+    public class ResourceType : UserCode
     {
         [Column("CDOTYPEID")]
         public int? CDOTypeId { get; set; }
@@ -34,16 +34,17 @@ namespace CamstarDbClient.Entities
     }
 }
 
-namespace CamstarDbClient.CamstarContext
+namespace CamstarDb.Context
 {
-    public partial class CamstarDbContext : DbContext {
+    public partial class CamstarDbContext : DbContext
+    {
         public DbSet<ResourceType> ResourceTypes { get; set; }
     }
     public class ResourceTypeEntityTypeConfiguration : IEntityTypeConfiguration<ResourceType>
     {
         public void Configure(EntityTypeBuilder<ResourceType> builder)
         {
-            
+
         }
     }
 }

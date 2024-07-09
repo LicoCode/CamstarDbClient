@@ -7,15 +7,21 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
+using CamstarDb.Entities;
+using Microsoft.EntityFrameworkCore.Metadata.Builders;
+
+using Microsoft.EntityFrameworkCore;
+
 ///    @Description The user code for container defect reason.
 ///    @author lichong
 ///    @date 2024/3/24
 ///
-namespace CamstarDbClient.Entities {
+namespace CamstarDb.Entities
+{
     using System.ComponentModel.DataAnnotations;
     using System.ComponentModel.DataAnnotations.Schema;
-    using CamstarDbClient.Entities.Enum;
-    
+    using global::CamstarDb.Entities.Enum;
+
     [Table("CONTAINERDEFECTREASON")]
     public class ContainerDefectReason : UserCode {
         [Column("DESCRIPTION")]
@@ -42,6 +48,21 @@ namespace CamstarDbClient.Entities {
         [Column("NOTES")]
         public string Notes {
             get; set;
+        }
+    }
+}
+
+namespace CamstarDb.Context
+{
+    public partial class CamstarDbContext : DbContext
+    {
+        public DbSet<ContainerDefectReason> ContainerDefectReasons { get; set; }
+    }
+    public class ContainerDefectReasonEntityTypeConfiguration : IEntityTypeConfiguration<ContainerDefectReason>
+    {
+        public void Configure(EntityTypeBuilder<ContainerDefectReason> builder)
+        {
+
         }
     }
 }

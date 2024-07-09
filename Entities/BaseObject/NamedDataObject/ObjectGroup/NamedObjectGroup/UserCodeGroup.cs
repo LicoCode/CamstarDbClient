@@ -11,14 +11,16 @@
 ///    @author lichong
 ///    @date 2024/3/24
 ///
-namespace CamstarDbClient.Entities {
+namespace CamstarDb.Entities
+{
     using System.ComponentModel.DataAnnotations;
     using System.ComponentModel.DataAnnotations.Schema;
-    using CamstarDbClient.Entities.Enum;
-    
-    [Table("USERCODEGROUP")]
+    using global::CamstarDb.Entities.Enum;
+
+    //[Table("USERCODEGROUP")]
+    [NotMapped]
     public class UserCodeGroup : NamedObjectGroup {
-        [Column("CHANGECOUNT")]
+        /*[Column("CHANGECOUNT")]
         public System.Nullable<int> ChangeCount {
             get; set;
         }
@@ -29,14 +31,6 @@ namespace CamstarDbClient.Entities {
         }
         [Column("USERCODEGROUPNAME")]
         public string Name {
-            get; set;
-        }
-        [Column("ISFROZEN")]
-        public System.Nullable<bool> IsFrozen {
-            get; set;
-        }
-        [Column("ICONID")]
-        public System.Nullable<int> IconId {
             get; set;
         }
         [Column("DESCRIPTION")]
@@ -60,6 +54,6 @@ namespace CamstarDbClient.Entities {
         [Column("NOTES")]
         public string Notes {
             get; set;
-        }
+        }*/
     }
 }

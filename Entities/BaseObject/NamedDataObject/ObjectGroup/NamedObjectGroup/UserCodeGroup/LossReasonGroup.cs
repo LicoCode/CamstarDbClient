@@ -7,17 +7,25 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
+using CamstarDb.Entities;
+
+using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Metadata.Builders;
+using System.Reflection.Emit;
+
 ///    @Description A User Code Object Group that represents a group of LossReasons.
 ///    @author lichong
 ///    @date 2024/3/24
 ///
-namespace CamstarDbClient.Entities {
+namespace CamstarDb.Entities {
     using System.ComponentModel.DataAnnotations;
     using System.ComponentModel.DataAnnotations.Schema;
-    using CamstarDbClient.Entities.Enum;
+    using global::CamstarDb.Entities.Enum;
     
     [Table("LOSSREASONGROUP")]
     public class LossReasonGroup : UserCodeGroup {
+        public virtual ICollection<LossReasonGroup> LossReasonGroups { get; set; }
+
         public virtual ICollection<LossReason> Entries {
             get; set;
         }
@@ -60,6 +68,41 @@ namespace CamstarDbClient.Entities {
         [Column("NOTES")]
         public string Notes {
             get; set;
+        }
+    }
+}
+
+namespace CamstarDb.Context
+{
+    public partial class CamstarDbContext : DbContext
+    {
+        public DbSet<LossReasonGroup> LossReasonGroups { get; set; }
+    }
+    public class LossReasonGroupEntityTypeConfiguration : IEntityTypeConfiguration<LossReasonGroup>
+    {
+        public void Configure(EntityTypeBuilder<LossReasonGroup> builder)
+        {
+            builder.HasMany(e => e.Groups).WithMany(e => e.LossReasonGroups).UsingEntity<Dictionary<string, object>>(
+               "NAMEDOBJECTGROUPGROUPS",
+               l => l.HasOne<LossReasonGroup>().WithMany().HasForeignKey("GROUPSID"),
+               r => r.HasOne<LossReasonGroup>().WithMany().HasForeignKey("NAMEDOBJECTGROUPID"),
+               j =>
+               {
+                   j.HasKey("NAMEDOBJECTGROUPID", "GROUPSID");
+               }
+                );
+
+            builder.HasMany(e => e.Entries).WithMany(e => e.LossReasonGroups)
+            .UsingEntity<Dictionary<string, object>>(
+                "NAMEDOBJECTGROUPENTRIES",
+                l => l.HasOne<LossReason>().WithMany().HasForeignKey("ENTRIESID"),
+                r => r.HasOne<LossReasonGroup>().WithMany().HasForeignKey("NAMEDOBJECTGROUPID"),
+                j =>
+                {
+                    j.HasKey("NAMEDOBJECTGROUPID", "ENTRIESID");
+
+                }
+            );
         }
     }
 }

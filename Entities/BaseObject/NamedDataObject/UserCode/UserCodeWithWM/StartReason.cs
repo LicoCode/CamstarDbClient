@@ -2,15 +2,15 @@ using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
-using CamstarDbClient.Entities;
+using CamstarDb.Entities;
 
-namespace CamstarDbClient.Entities
+namespace CamstarDb.Entities
 {
     ///    @Description Each Container has an associated Start Code. Start Codes are available for selection criteria on WIP Status Inquiries and for transaction reporting (based on the transaction history).
     ///    @author lichong
     ///    @date 2024/4/12
     [Table("STARTREASON")]
-    public class StartReason: UserCodeWithWM
+    public class StartReason : UserCodeWithWM
     {
         [Column("CDOTYPEID")]
         public int? CDOTypeId { get; set; }
@@ -34,16 +34,17 @@ namespace CamstarDbClient.Entities
     }
 }
 
-namespace CamstarDbClient.CamstarContext
+namespace CamstarDb.Context
 {
-    public partial class CamstarDbContext : DbContext {
+    public partial class CamstarDbContext : DbContext
+    {
         public DbSet<StartReason> StartReasons { get; set; }
     }
     public class StartReasonEntityTypeConfiguration : IEntityTypeConfiguration<StartReason>
     {
         public void Configure(EntityTypeBuilder<StartReason> builder)
         {
-            
+
         }
     }
 }

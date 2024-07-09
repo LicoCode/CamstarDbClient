@@ -1,10 +1,8 @@
-﻿using CamstarDbClient.Config;
-using CamstarDbClient.Entities;
+﻿using CamstarDb.Config;
+using CamstarDb.Entities;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.Logging;
-using System.Diagnostics;
 
-namespace CamstarDbClient.Context;
+namespace CamstarDb.Context;
 
 public partial class CamstarDbContext : DbContext
 {
@@ -14,21 +12,22 @@ public partial class CamstarDbContext : DbContext
     /// <param name="optionsBuilder"></param>
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
     {
-        var options = optionsBuilder.LogTo(Console.WriteLine, LogLevel.Debug)  //打印Info日志
-            .UseLazyLoadingProxies();   //懒加载
-        if (DbConfiguration.Type.ToUpper() == "ORACLE")
-        {
-            options.UseOracle(DbConfiguration.DefaultConnection);
+        var options = optionsBuilder.UseLazyLoadingProxies();
+        if (DbConfiguration.LoggerFactory != null) {
+            optionsBuilder.UseLoggerFactory(DbConfiguration.LoggerFactory);
         }
-        else if(DbConfiguration.Type.ToUpper() == "SQLSERVER")
+        if (DbConfiguration.DbType.ToUpper() == "ORACLE")
         {
-            options.UseSqlServer(DbConfiguration.DefaultConnection);
+            options.UseOracle(DbConfiguration.ConnectionString);
         }
-
+        else if (DbConfiguration.DbType.ToUpper() == "MSSQL")
+        {
+            options.UseSqlServer(DbConfiguration.ConnectionString);
+        }
     }
 
     public override int SaveChanges()
-    { 
+    {
         var entries = ChangeTracker.Entries()
             .Where(e => e.State == EntityState.Added ||
                         e.State == EntityState.Modified ||
@@ -39,15 +38,9 @@ public partial class CamstarDbContext : DbContext
         }
         return base.SaveChanges();
     }
-
-  
-
-
+    
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
         modelBuilder.ApplyAllConfigurations(typeof(CamstarDbContext).Assembly);
-        
     }
-
-    
 }
