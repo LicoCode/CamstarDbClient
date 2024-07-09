@@ -11,7 +11,7 @@
 //    @author lichong
 //    @date 2024/3/24
 //
-namespace CamstarDbClient.Entities.Enum {
+namespace CamstarDb.Entities.Enum {
     
     public enum isOrderStateEnum {
         Open = 1,

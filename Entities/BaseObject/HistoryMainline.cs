@@ -2,15 +2,15 @@ using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
-using CamstarDbClient.Entities;
+using CamstarDb.Entities;
 
-namespace CamstarDbClient.Entities
+namespace CamstarDb.Entities
 {
     ///    @Description History information  that is common to most or all shop floor transaction services is stored in the HistoryMainline.  Typically there is one HistoryMainline entry for each Shop floor transaction, although compound transactions can be configured to generate multiple HistoryMainlines when appropriate.  The HistoryMainline is the primary source of History information.
     ///    @author lichong
     ///    @date 2024/4/12
     [Table("HISTORYMAINLINE")]
-    public class HistoryMainline: BaseObject
+    public class HistoryMainline : BaseObject
     {
         [Column("CDOTYPEID")]
         public int? CDOTypeId { get; set; }
@@ -43,16 +43,17 @@ namespace CamstarDbClient.Entities
     }
 }
 
-namespace CamstarDbClient.CamstarContext
+namespace CamstarDb.Context
 {
-    public partial class CamstarDbContext : DbContext {
+    public partial class CamstarDbContext : DbContext
+    {
         public DbSet<HistoryMainline> HistoryMainlines { get; set; }
     }
     public class HistoryMainlineEntityTypeConfiguration : IEntityTypeConfiguration<HistoryMainline>
     {
         public void Configure(EntityTypeBuilder<HistoryMainline> builder)
         {
-            
+
         }
     }
 }

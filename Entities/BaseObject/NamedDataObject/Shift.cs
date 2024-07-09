@@ -7,15 +7,22 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
+using CamstarDb.Entities;
+using Microsoft.EntityFrameworkCore.Metadata.Builders;
+
+using Microsoft.EntityFrameworkCore;
+
 ///    @Description Typically applies to manufacturing companies that have areas staffed for a long enough during a day that workers do not all start and end their day at the same time.  Shift is a mechanism for grouping production information based on management responsibilities for workers that start and leave at a particular time.  For example, the "Day" shift might work from 6am to 6pm, and the "Night" shift would work from 6pm to 6am. 
 ///    @author lichong
 ///    @date 2024/3/24
 ///
-namespace CamstarDbClient.Entities {
+namespace CamstarDb.Entities
+{
     using System.ComponentModel.DataAnnotations;
     using System.ComponentModel.DataAnnotations.Schema;
-    using CamstarDbClient.Entities.Enum;
-    
+    using CamstarDb.Entities;
+    using global::CamstarDb.Entities.Enum;
+
     [Table("SHIFT")]
     public class Shift : NamedDataObject {
         [Column("CDOTYPEID")]
@@ -42,6 +49,21 @@ namespace CamstarDbClient.Entities {
         [Column("NOTES")]
         public string Notes {
             get; set;
+        }
+    }
+}
+
+namespace CamstarDb.Context
+{
+    public partial class CamstarDbContext : DbContext
+    {
+        public DbSet<Shift> Shifts { get; set; }
+    }
+    public class ShiftEntityTypeConfiguration : IEntityTypeConfiguration<Shift>
+    {
+        public void Configure(EntityTypeBuilder<Shift> builder)
+        {
+
         }
     }
 }

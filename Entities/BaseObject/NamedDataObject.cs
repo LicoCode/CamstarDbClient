@@ -2,15 +2,14 @@ using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
-using CamstarDbClient.Entities;
 
-namespace CamstarDbClient.Entities
+namespace CamstarDb.Entities
 {
     ///    @Description Factory modeling objects that can be uniquely identified by name.
     ///    @author lichong
     ///    @date 2024/4/12
     [NotMapped]
-    public abstract class NamedDataObject: BaseObject
+    public abstract class NamedDataObject : BaseObject
     {
         public int? CDOTypeId { get; set; }
 

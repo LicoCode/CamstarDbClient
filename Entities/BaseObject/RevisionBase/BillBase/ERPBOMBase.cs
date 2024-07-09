@@ -2,15 +2,15 @@ using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
-using CamstarDbClient.Entities;
+using CamstarDb.Entities;
 
-namespace CamstarDbClient.Entities
+namespace CamstarDb.Entities
 {
     ///    @Description A bill of material (BOM) defines the materials needed to produce a specific product.  An ERP BOM references steps in an ERP route instead of referencing steps in an InSite workflow.
     ///    @author lichong
     ///    @date 2024/4/12
     [Table("ERPBOMBASE")]
-    public class ERPBOMBase: BillBase
+    public class ERPBOMBase : BillBase
     {
         [Column("CDOTYPEID")]
         public int? CDOTypeId { get; set; }
@@ -28,16 +28,17 @@ namespace CamstarDbClient.Entities
     }
 }
 
-namespace CamstarDbClient.CamstarContext
+namespace CamstarDb.Context
 {
-    public partial class CamstarDbContext : DbContext {
+    public partial class CamstarDbContext : DbContext
+    {
         public DbSet<ERPBOMBase> ERPBOMBases { get; set; }
     }
     public class ERPBOMBaseEntityTypeConfiguration : IEntityTypeConfiguration<ERPBOMBase>
     {
         public void Configure(EntityTypeBuilder<ERPBOMBase> builder)
         {
-            
+
         }
     }
 }

@@ -12,11 +12,14 @@
 ///    @author lichong
 ///    @date 2024/3/24
 ///
-namespace CamstarDbClient.Entities {
+namespace CamstarDb.Entities
+{
     using System.ComponentModel.DataAnnotations;
     using System.ComponentModel.DataAnnotations.Schema;
-    using CamstarDbClient.Entities.Enum;
-    
+    using CamstarDb.Entities;
+    using CamstarDb.Entities;
+    using global::CamstarDb.Entities.Enum;
+
     [NotMapped()]
     public abstract class RevisionedObjectGroup : ObjectGroup {
         public string EntryType {
@@ -43,14 +46,9 @@ namespace CamstarDbClient.Entities {
         public string Description {
             get; set;
         }
-        public System.Nullable<int> IconId {
-            get; set;
-        }
         public virtual ICollection<RevisionedObjectGroup> Groups {
             get; set;
         }
-        public System.Nullable<bool> IsFrozen {
-            get; set;
-        }
+       
     }
 }

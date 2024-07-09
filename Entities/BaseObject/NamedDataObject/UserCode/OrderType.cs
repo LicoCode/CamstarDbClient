@@ -2,15 +2,15 @@ using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
-using CamstarDbClient.Entities;
+using CamstarDb.Entities;
 
-namespace CamstarDbClient.Entities
+namespace CamstarDb.Entities
 {
     ///    @Description ERP Manufaturing Order type.  Several different values that can appear here include: "Standard", "Rework", "Test Run", etc
     ///    @author lichong
     ///    @date 2024/4/12
     [Table("ORDERTYPE")]
-    public class OrderType: UserCode
+    public class OrderType : UserCode
     {
         [Column("CDOTYPEID")]
         public int? CDOTypeId { get; set; }
@@ -34,16 +34,17 @@ namespace CamstarDbClient.Entities
     }
 }
 
-namespace CamstarDbClient.CamstarContext
+namespace CamstarDb.Context
 {
-    public partial class CamstarDbContext : DbContext {
+    public partial class CamstarDbContext : DbContext
+    {
         public DbSet<OrderType> OrderTypes { get; set; }
     }
     public class OrderTypeEntityTypeConfiguration : IEntityTypeConfiguration<OrderType>
     {
         public void Configure(EntityTypeBuilder<OrderType> builder)
         {
-            
+
         }
     }
 }

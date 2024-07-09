@@ -1,4 +1,4 @@
-namespace CamstarDbClient.Entities
+namespace CamstarDb.Entities
 {
     ///    @Description Contains enumeration codes for the Resource Availability ( Up, Down etc. )
     ///    @author lichong

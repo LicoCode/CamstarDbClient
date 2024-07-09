@@ -2,15 +2,15 @@ using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
-using CamstarDbClient.Entities;
+using CamstarDb.Entities;
 
-namespace CamstarDbClient.Entities
+namespace CamstarDb.Entities
 {
     ///    @Description An instance of a Resource Production Status is used to keep track of the current status of a Resource (typically a machine) as it relates to production. This includes information such as whether the Resource is Up (available) or Down, what Product(s) it is currently setup to run, the currently associated manufacturing order (if any), etc. A Resource Production Status can be thought of as the Resource view of production in contrast to a Container being the material view of production.
     ///    @author lichong
     ///    @date 2024/4/22
     [Table("PRODUCTIONSTATUS")]
-    public class ProductionStatus: CurrentResourceStatus
+    public class ProductionStatus : CurrentResourceStatus
     {
         [Column("AVAILABILITY")]
         public ResourceAvailabilityEnum? Availability { get; set; }
@@ -33,16 +33,17 @@ namespace CamstarDbClient.Entities
     }
 }
 
-namespace CamstarDbClient.CamstarContext
+namespace CamstarDb.Context
 {
-    public partial class CamstarDbContext : DbContext {
+    public partial class CamstarDbContext : DbContext
+    {
         public DbSet<ProductionStatus> ProductionStatuss { get; set; }
     }
     public class ProductionStatusEntityTypeConfiguration : IEntityTypeConfiguration<ProductionStatus>
     {
         public void Configure(EntityTypeBuilder<ProductionStatus> builder)
         {
-            
+
         }
     }
 }

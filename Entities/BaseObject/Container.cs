@@ -2,17 +2,25 @@ using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
-using CamstarDbClient.Entities;
+using CamstarDb.Entities;
 
-namespace CamstarDbClient.Entities
+namespace CamstarDb.Entities
 {
     ///    @Description A Container describes a discrete unit of work or a discrete quantity of material (i.e., batch of material, a serialized component or serialized piece of material, a uniquely identified package or vessel that contains product, etc.)  A Container can include quantity information (weight, count, etc.) directly, or it can include a grouping of other containers (child containers).
-    ///    @author lichong
+    ///    @author lichong 
     ///    @date 2024/4/12
     [Table("CONTAINER")]
-    public class Container: BaseObject
+    public class Container : BaseObject
     {
+        [ForeignKey("PARENTID")]
         public virtual ICollection<UserAttribute>? Attributes { get; set; }
+
+        [Column("ES_PRIMARYSERIALNUMBER")]
+        public string? ES_PrimarySerialNumber { get; set; }
+        [Column("ES_SERIALNUMBER2")]
+        public string? ES_SerialNumber2 { get; set; }
+        [Column("ES_SERIALNUMBER3")]
+        public string? ES_SerialNumber3 { get; set; }
 
         [Column("CDOTYPEID")]
         public int? CDOTypeId { get; set; }
@@ -25,9 +33,6 @@ namespace CamstarDbClient.Entities
 
         [ForeignKey("CUSTOMERID")]
         public virtual Customer? Customer { get; set; }
-
-        [Column("DESCRIPTION")]
-        public string? Description { get; set; }
 
         [ForeignKey("HOLDREASONID")]
         public virtual HoldReason? HoldReason { get; set; }
@@ -51,6 +56,7 @@ namespace CamstarDbClient.Entities
         [ForeignKey("OWNERID")]
         public virtual Owner? Owner { get; set; }
 
+        [ForeignKey("PARENTCONTAINERID")]
         public virtual Container? Parent { get; set; }
 
         [ForeignKey("PRODUCTID")]
@@ -60,7 +66,7 @@ namespace CamstarDbClient.Entities
         public double? Qty { get; set; }
 
         [Column("STATUS")]
-        public int? Status { get; set; }
+        public ContainerStatusEnum? Status { get; set; }
 
         [ForeignKey("UOMID")]
         public virtual UOM? UOM { get; set; }
@@ -69,9 +75,10 @@ namespace CamstarDbClient.Entities
     }
 }
 
-namespace CamstarDbClient.CamstarContext
+namespace CamstarDb.Context
 {
-    public partial class CamstarDbContext : DbContext {
+    public partial class CamstarDbContext : DbContext
+    {
         public DbSet<Container> Containers { get; set; }
     }
     public class ContainerEntityTypeConfiguration : IEntityTypeConfiguration<Container>
@@ -79,6 +86,7 @@ namespace CamstarDbClient.CamstarContext
         public void Configure(EntityTypeBuilder<Container> builder)
         {
             builder.HasOne(e => e.Parent).WithMany(e => e.ChildContainers).HasForeignKey("PARENTCONTAINERID").IsRequired(false);
+
         }
     }
 }

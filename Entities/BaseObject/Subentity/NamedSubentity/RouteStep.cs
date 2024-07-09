@@ -11,11 +11,13 @@
 ///    @author lichong
 ///    @date 2024/3/24
 ///
-namespace CamstarDbClient.Entities {
+namespace CamstarDb.Entities
+{
     using System.ComponentModel.DataAnnotations;
     using System.ComponentModel.DataAnnotations.Schema;
-    using CamstarDbClient.Entities.Enum;
-    
+    using CamstarDb.Entities;
+    using global::CamstarDb.Entities.Enum;
+
     [Table("ROUTESTEP")]
     public class RouteStep : NamedSubentity {
         [Column("ROUTESTEPID")]

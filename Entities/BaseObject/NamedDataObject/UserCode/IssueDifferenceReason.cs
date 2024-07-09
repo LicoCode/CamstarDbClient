@@ -2,15 +2,15 @@ using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
-using CamstarDbClient.Entities;
+using CamstarDb.Entities;
 
-namespace CamstarDbClient.Entities
+namespace CamstarDb.Entities
 {
     ///    @Description Describes the reason for the difference between the required quantity and the actual quantity issued.
     ///    @author lichong
     ///    @date 2024/4/12
     [Table("ISSUEDIFFERENCEREASON")]
-    public class IssueDifferenceReason: UserCode
+    public class IssueDifferenceReason : UserCode
     {
         [Column("CDOTYPEID")]
         public int? CDOTypeId { get; set; }
@@ -34,16 +34,17 @@ namespace CamstarDbClient.Entities
     }
 }
 
-namespace CamstarDbClient.CamstarContext
+namespace CamstarDb.Context
 {
-    public partial class CamstarDbContext : DbContext {
+    public partial class CamstarDbContext : DbContext
+    {
         public DbSet<IssueDifferenceReason> IssueDifferenceReasons { get; set; }
     }
     public class IssueDifferenceReasonEntityTypeConfiguration : IEntityTypeConfiguration<IssueDifferenceReason>
     {
         public void Configure(EntityTypeBuilder<IssueDifferenceReason> builder)
         {
-            
+
         }
     }
 }
